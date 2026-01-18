@@ -147,11 +147,8 @@ class TargetTest {
         Target target = new Target(10);
         int[] nums = {10};
 
-        // When
-        Set<Pair<IndexedValue<Integer>, IndexedValue<Integer>>> result = target.findPairs(nums);
-
-        // Then: should return empty set (no pairs possible)
-        assertTrue(result.isEmpty());
+        // When/Then: should throw exception (based on validator behavior)
+        assertThrows(IllegalArgumentException.class, () -> target.findPairs(nums));
     }
 
     @Test
