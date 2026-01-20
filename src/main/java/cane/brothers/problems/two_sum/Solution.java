@@ -8,7 +8,7 @@ import java.util.Map;
  * Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to
  * target.
  * You may assume that each input would have exactly one solution, and you may not use the same element twice.
- *
+ * <p>
  * link: <a href="https://leetcode.com/problems/two-sum/">two-sum</a>
  */
 public class Solution {
@@ -20,7 +20,7 @@ public class Solution {
         for (int i = 0; i < nums.length; i++) {
             int complement = target - nums[i];
             if (map.containsKey(complement)) {
-                return new int[] { map.get(complement), i };
+                return new int[]{map.get(complement), i};
             }
             map.put(nums[i], i);
         }
@@ -33,7 +33,7 @@ public class Solution {
         int[] result = new int[2];
         for (int i = 0; i < nums.length - 1; i++) {
             for (int j = 1; j < nums.length; j++) {
-                if( i == j) {
+                if (i == j) {
                     continue;
                 }
                 int sum = nums[i] + nums[j];
