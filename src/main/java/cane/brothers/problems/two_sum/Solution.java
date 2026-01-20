@@ -1,16 +1,35 @@
 package cane.brothers.problems.two_sum;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
+/**
+ * Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to
+ * target.
+ * You may assume that each input would have exactly one solution, and you may not use the same element twice.
+ *
+ * link: <a href="https://leetcode.com/problems/two-sum/">two-sum</a>
+ */
 public class Solution {
-    public int[] twoSum(int[] nums, int target) {
-        if (nums == null) {
-            throw new NullPointerException("nums should not be empty");
-        }
 
-        if (nums.length < 2 || nums.length > 10000) {
-            throw new IllegalArgumentException("1 <= nums.length <= 104");
+    public int[] twoSum(int[] nums, int target) {
+        validateInput(nums, target);
+
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            int complement = target - nums[i];
+            if (map.containsKey(complement)) {
+                return new int[] { map.get(complement), i };
+            }
+            map.put(nums[i], i);
         }
+        throw new IllegalArgumentException("No two sum solution");
+    }
+
+    public int[] classic(int[] nums, int target) {
+        validateInput(nums, target);
+
         int[] result = new int[2];
         for (int i = 0; i < nums.length - 1; i++) {
             for (int j = 1; j < nums.length; j++) {
@@ -27,5 +46,22 @@ public class Solution {
         }
         System.out.println(Arrays.toString(result));
         return result;
+    }
+
+    private void validateInput(int[] nums, int target) {
+        if (nums == null) {
+            throw new NullPointerException("nums should not be empty");
+        }
+        if (nums.length < 2 || nums.length > 104) {
+            throw new IllegalArgumentException("2 <= nums.length <= 104");
+        }
+        for (int num : nums) {
+            if (num < -1_000_000_000 || num > 1_000_000_000) {
+                throw new IllegalArgumentException("-10^9 <= nums[i] <= 10^9");
+            }
+        }
+        if (target < -1_000_000_000 || target > 1_000_000_000) {
+            throw new IllegalArgumentException("-10^9 <= target <= 10^9");
+        }
     }
 }
