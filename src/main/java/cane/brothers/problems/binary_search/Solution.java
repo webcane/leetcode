@@ -55,12 +55,11 @@ public class Solution {
     }
 
     protected static class BinarySearch {
-        private int[] nums;
-        private int target;
+        private final int[] nums;
         private int left;
         private int right;
 
-        public BinarySearch(int[] nums) {
+        public BinarySearch(final int[] nums) {
             this.nums = nums;
             left = 0;
             right = nums.length - 1;
