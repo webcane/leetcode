@@ -17,22 +17,6 @@ import java.util.stream.IntStream;
  */
 public class Solution {
 
-    public int getSingleElement(int[] nums) {
-//    return classic(nums);
-//    return streams(nums);
-    return hashMap(nums);
-//        return xor(nums);
-    }
-
-    private int xor(int[] nums) {
-        int result = 0;
-        for (int num : nums) {
-            // magic
-            result ^= num;
-        }
-        return result;
-    }
-
     public static <T> Collector<T, ?, T> toSingleton() {
         return Collectors.collectingAndThen(
                 Collectors.toList(),
@@ -43,6 +27,22 @@ public class Solution {
                     return list.get(0);
                 }
         );
+    }
+
+    public int getSingleElement(int[] nums) {
+//    return classic(nums);
+//    return streams(nums);
+//    return hashMap(nums);
+        return xor(nums);
+    }
+
+    private int xor(int[] nums) {
+        int result = 0;
+        for (int num : nums) {
+            // magic
+            result ^= num;
+        }
+        return result;
     }
 
     private int streams(int[] nums) {

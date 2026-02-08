@@ -16,10 +16,6 @@ class SolutionTest {
         solution = new Solution();
     }
 
-    @AfterEach
-    void tearDown() {
-    }
-
     @Test
     void testSumOfTwo() {
         int[] nums = {2, 7, 11, 15};
