@@ -12,16 +12,17 @@ package cane.brothers.problems.container_with_most_water;
  * 0 <= height[i] <= 10^4
  * <p>
  * Topics:
- *  - Array
- *  - Two Pointers
- *  - Greedy
+ * - Array
+ * - Two Pointers
+ * - Greedy
  */
 public class Solution {
 
     public int maxArea(int[] height) {
         validateInput(height);
 //        return classic(height);
-        return pointer(height);
+//        return withPointers(height);
+        return withArea(height);
     }
 
     private void validateInput(int[] height) {
@@ -63,23 +64,16 @@ public class Solution {
         return maxArea;
     }
 
-    private static class Pointer {
-        private int position;
-        public Pointer(int position) {
-            this.position = position;
+    private int withArea(int[] height) {
+        Area area = new Area(height);
+        while (area.isCalculated()) {
+            area.calcArea();
+            area.moveSide();
         }
-        public int get() {
-            return position;
-        }
-        public void increment() {
-            position++;
-        }
-        public void decrement() {
-            position--;
-        }
+        return area.getMaxArea();
     }
 
-    private int pointer(int[] height) {
+    private int withPointers(int[] height) {
         Pointer left = new Pointer(0);
         Pointer right = new Pointer(height.length - 1);
         int maxArea = 0;
@@ -94,5 +88,63 @@ public class Solution {
             }
         }
         return maxArea;
+    }
+
+    private static class Area {
+        private final int[] height;
+        private int left; // leftSide
+        private int right;
+        private int maxArea = 0;// rightSide
+
+        public Area(final int[] height) {
+            this.left = 0;
+            this.right = height.length - 1;
+            this.height = height;
+        }
+
+        public boolean isCalculated() {
+            //  move one of sides until they not meet each other
+            return (left < right);
+        }
+
+        public void calcArea() {
+            int currHeight = Math.min(height[left], height[right]);
+            int currArea = currHeight * (right - left);
+            maxArea = Math.max(currArea, maxArea);
+        }
+
+        public void moveSide() {
+            if (height[left] < height[right]) {
+                // move left side
+                left++;
+            } else {
+                // move right side
+                right--;
+            }
+        }
+
+        public int getMaxArea() {
+            return maxArea;
+        }
+    }
+
+    private static class Pointer {
+        private int position;
+
+        public Pointer(int position) {
+            this.position = position;
+        }
+
+        public int get() {
+            return position;
+        }
+
+        public void increment() {
+            position++;
+        }
+
+        public void decrement() {
+            position--;
+        }
     }
 }
