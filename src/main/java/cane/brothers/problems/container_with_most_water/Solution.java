@@ -66,11 +66,7 @@ public class Solution {
 
     private int withArea(int[] height) {
         Area area = new Area(height);
-        while (area.isCalculated()) {
-            area.calcArea();
-            area.moveSide();
-        }
-        return area.getMaxArea();
+        return area.calcMaxArea();
     }
 
     private int withPointers(int[] height) {
@@ -102,18 +98,18 @@ public class Solution {
             this.height = height;
         }
 
-        public boolean isCalculated() {
+        private boolean isCalculated() {
             //  move one of sides until they not meet each other
             return (left < right);
         }
 
-        public void calcArea() {
+        private void calcArea() {
             int currHeight = Math.min(height[left], height[right]);
             int currArea = currHeight * (right - left);
             maxArea = Math.max(currArea, maxArea);
         }
 
-        public void moveSide() {
+        private void moveSide() {
             if (height[left] < height[right]) {
                 // move left side
                 left++;
@@ -123,7 +119,11 @@ public class Solution {
             }
         }
 
-        public int getMaxArea() {
+        public int calcMaxArea() {
+            while (isCalculated()) {
+                calcArea();
+                moveSide();
+            }
             return maxArea;
         }
     }
