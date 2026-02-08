@@ -2,6 +2,7 @@ package cane.brothers.problems.add_two_numbers;
 
 public class Solution {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        // TODO validate input
         return useWhile(l1, l2);
     }
 
@@ -10,10 +11,9 @@ public class Solution {
         ListNode cursor = result;
         int carry = 0;
 
-        ListNode ln1 = l1, ln2 = l2;
-        while (ln1 != null || ln2 != null || carry != 0) {
-            int l1Val = getNodeValue(ln1);
-            int l2Val = getNodeValue(ln2);
+        while (l1 != null || l2 != null || carry != 0) {
+            int l1Val = getNodeValue(l1);
+            int l2Val = getNodeValue(l2);
 
             int sum = l1Val + l2Val + carry;
             carry = sum / 10;
@@ -21,10 +21,10 @@ public class Solution {
             cursor.next = new ListNode(currVal);
             cursor = cursor.next;
 
-            if (ln1 != null)
-                ln1 = ln1.next;
-            if (ln2 != null)
-                ln2 = ln2.next;
+            if (l1 != null)
+                l1 = l1.next;
+            if (l2 != null)
+                l2 = l2.next;
         }
 
         return result.next;
