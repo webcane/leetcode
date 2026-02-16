@@ -16,6 +16,38 @@ public class Solution {
     public int[] twoSum(int[] nums, int target) {
         validateInput(nums, target);
 
+//        return classic(nums, target);
+//        return withComplementMap(nums, target);
+        return withTwoPointers(nums, target);
+    }
+
+    private int[] withTwoPointers(int[] nums, int target) {
+        int left = 0;
+        int right = nums.length - 1;
+
+        while (left < right) {
+            int complement = nums[left] + nums[right];
+            if (complement == target) {
+                return new int[]{left, right};
+            } else if (complement > 0) {
+                if (complement < target) {
+                    left++;
+                } else {
+                    right--;
+                }
+            } else {
+                if (complement > target) {
+                    left++;
+                } else {
+                    right--;
+                }
+            }
+
+        }
+        throw new IllegalArgumentException("No two sum solution");
+    }
+
+    private int[] withComplementMap(int[] nums, int target) {
         Map<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
             int complement = target - nums[i];
@@ -28,8 +60,6 @@ public class Solution {
     }
 
     public int[] classic(int[] nums, int target) {
-        validateInput(nums, target);
-
         int[] result = new int[2];
         for (int i = 0; i < nums.length - 1; i++) {
             for (int j = 1; j < nums.length; j++) {
