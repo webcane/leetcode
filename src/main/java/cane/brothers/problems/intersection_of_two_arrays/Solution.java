@@ -1,5 +1,6 @@
 package cane.brothers.problems.intersection_of_two_arrays;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.stream.Collectors;
@@ -16,8 +17,30 @@ public class Solution {
     public int[] intersection(int[] nums1, int[] nums2) {
         validateInput(nums1, nums2);
 
-//        return withTwoPointers(nums1, nums2);
-        return withSet(nums1, nums2);
+        return withTwoPointers(nums1, nums2);
+//        return withSet(nums1, nums2);
+    }
+
+    private int[] withTwoPointers(int[] nums1, int[] nums2) {
+        int i = 0;
+        int j = 0;
+        var result = new ArrayList<Integer>();
+        while (i < nums1.length && j < nums2.length) {
+            var one = nums1[i];
+            var two = nums2[j];
+            if (one == two) {
+                if (!result.contains(one)) {
+                    result.add(one);
+                }
+                i++;
+                j++;
+            } else if (one < two) {
+                i++;
+            } else {
+                j++;
+            }
+        }
+        return result.stream().mapToInt(Integer::intValue).toArray();
     }
 
     private int[] withSet(int[] nums1, int[] nums2) {
