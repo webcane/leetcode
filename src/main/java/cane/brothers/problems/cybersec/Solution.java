@@ -20,7 +20,8 @@ public class Solution {
         // Подсчитываем частоту каждого символа
         for (char ch : s.toCharArray()) {
 //            frequency.put(ch, frequency.getOrDefault(ch, 0) + 1);
-            frequency.compute(ch, (c, val) -> val == null ? 1 : val + 1);
+//            frequency.compute(ch, (c, val) -> val == null ? 1 : val + 1);
+            frequency.merge(ch, 1, Integer::sum);
         }
 
         // Общее количество возможных комбинаций по двум элементам
