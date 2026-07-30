@@ -191,6 +191,7 @@ hs_err_pid*
 # File-based project format
 
 # IntelliJ
+**/.idea
 
 # mpeltonen/sbt-idea plugin
 
@@ -203,4 +204,7 @@ hs_err_pid*
 # Editor-based Rest Client
 
 # Android studio 3.1+ serialized cache file
+
+# Apple
+**/.DS_Store
 
