@@ -1,26 +1,64 @@
 package cane.brothers.problems.monotonic_array;
 
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
 public class Solution {
     private static final int MAX_NUM = 100000;
 
     public boolean isMonotonic(int[] nums) {
         validate(nums);
+//        return withSet(nums);
+        return withTwoFlags(nums);
+    }
 
+
+    record IntPair(int first, int second) {
+    }
+
+    static Iterable<IntPair> pairwise(int[] arr) {
+        return () -> new Iterator<>() {
+            int i = 0;
+
+            public boolean hasNext() {
+                return i < arr.length - 1;
+            }
+
+            public IntPair next() {
+                if (!hasNext()) throw new NoSuchElementException();
+                return new IntPair(arr[i], arr[i++ + 1]);
+            }
+        };
+    }
+
+    private boolean withSet(int[] nums) {
+        var result = new HashSet<Boolean>();
+        for (var pair : pairwise(nums)) {
+            if (pair.first == pair.second) {
+                continue;
+            }
+            result.add(pair.first < pair.second);
+        }
+        return result.size() <= 1;
+
+    }
+
+
+    private boolean withTwoFlags(int[] nums) {
         boolean incr = true; // flag to check if array is increasing
         boolean decr = true; // flag to check if array is decreasing
 
         for (int i = 0; i < nums.length - 1; i++) {
             // Calculate the difference between consecutive elements
-            int tmp = nums[i] - nums[i + 1];
-            incr &= (tmp >= 0);
-            decr &= (tmp <= 0);
+            incr &= (nums[i] >= nums[i + 1]);
+            decr &= (nums[i] <= nums[i + 1]);
 
             // Early exit if both flags are false
             if (!incr && !decr) {
                 return false;
             }
         }
-
         return true;
     }
 
