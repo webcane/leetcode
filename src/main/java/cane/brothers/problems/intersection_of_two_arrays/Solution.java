@@ -47,8 +47,8 @@ public class Solution {
         var set1 = Arrays.stream(nums1).boxed().collect(Collectors.toSet());
 
         var set2 = new HashSet<Integer>();
-        for (int i = 0; i < nums2.length; i++) {
-            set2.add(nums2[i]);
+        for (int j : nums2) {
+            set2.add(j);
         }
 
         set1.retainAll(set2);
