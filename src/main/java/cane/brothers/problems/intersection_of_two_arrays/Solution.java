@@ -3,6 +3,7 @@ package cane.brothers.problems.intersection_of_two_arrays;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -55,6 +56,23 @@ public class Solution {
         return set1.stream()
                 .mapToInt(Integer::intValue)
                 .toArray();
+    }
+
+    public static Set<Integer> intersection_set(int[] a, int[] b) {
+        Set<Integer> seen = new HashSet<>();
+        Set<Integer> result = new HashSet<>();
+
+        for (int x : a) {
+            seen.add(x);
+        }
+
+        for (int x : b) {
+            if (seen.contains(x)) {
+                result.add(x);
+            }
+        }
+
+        return result;
     }
 
     private void validateInput(int[] nums1, int[] nums2) {
