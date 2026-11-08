@@ -13,32 +13,17 @@ public class Solution {
         return withTwoFlags(nums);
     }
 
-
-    record IntPair(int first, int second) {
-    }
-
     static Iterable<IntPair> pairwise(int[] arr) {
-        return () -> new Iterator<>() {
-            int i = 0;
-
-            public boolean hasNext() {
-                return i < arr.length - 1;
-            }
-
-            public IntPair next() {
-                if (!hasNext()) throw new NoSuchElementException();
-                return new IntPair(arr[i], arr[i++ + 1]);
-            }
-        };
+        return () -> new PairIterator(arr);
     }
 
     private boolean withSet(int[] nums) {
         var result = new HashSet<Boolean>();
         for (var pair : pairwise(nums)) {
-            if (pair.first == pair.second) {
+            if (pair.first() == pair.second()) {
                 continue;
             }
-            result.add(pair.first < pair.second);
+            result.add(pair.first() < pair.second());
         }
         return result.size() <= 1;
 
