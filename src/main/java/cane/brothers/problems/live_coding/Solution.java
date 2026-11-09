@@ -116,4 +116,14 @@ public class Solution {
                 .thenComparing(Comparator.naturalOrder()));
     }
 
+    record Employee(String name, int age, int salary) {
+    }
+
+    static void sortEmployees(List<Employee> employees) {
+        Collections.sort(employees, Comparator.comparingInt(Employee::salary)
+                .reversed()
+                .thenComparingInt(Employee::age)
+                .thenComparing(Employee::name));
+    }
+
 }

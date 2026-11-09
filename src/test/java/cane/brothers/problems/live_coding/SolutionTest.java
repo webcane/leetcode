@@ -109,4 +109,16 @@ class SolutionTest {
 
         assertEquals(List.of("banana", "apple", "ant", "bee", "cat", "dog"), words);
     }
+
+    @Test
+    void test_sortEmployees() {
+//        List<Employee> employees = new ArrayList<>(List.of(
+//                new Employee("Bob", 30, 5000),
+//                new Employee("Alice", 25, 7000),
+//                new Employee("Charlie", 30, 7000),
+//                new Employee("David", 25, 7000)
+//        ));
+//
+//        sortEmployees(employees);
+    }
 }
