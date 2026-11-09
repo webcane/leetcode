@@ -1,9 +1,6 @@
 package cane.brothers.problems.live_coding;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 public class Solution {
 
@@ -92,5 +89,18 @@ public class Solution {
         }
         return freq;
     }
+
+
+    public static Map<Integer, List<String>> groupByLength(String[] words) {
+        Objects.requireNonNull(words);
+
+        Map<Integer, List<String>> counts = new HashMap<>();
+        for (String word : words) {
+            Integer key = word.length();
+            counts.computeIfAbsent(key, v -> new ArrayList<>()).add(word);
+        }
+        return counts;
+    }
+
 
 }

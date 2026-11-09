@@ -69,4 +69,24 @@ class SolutionTest {
         assertEquals("hello", mostFrequent(new String[]{"hello"})); // "hello"
         assertEquals(null, mostFrequent(new String[]{})); // null
     }
+
+    @Test
+    void test_groupByLength() {
+//        assertEquals(
+//        groupByLength(new String[]{"a", "cat", "to", "dog", "hi"});
+// {
+//   1=[a],
+//   2=[to, hi],
+//   3=[cat, dog]
+// }
+
+//        groupByLength(new String[]{});
+// {}
+
+//        groupByLength(new String[]{"", "a", ""});
+// {
+//   0=["", ""],
+//   1=["a"]
+// }
+    }
 }
