@@ -9,6 +9,7 @@ public class Solution {
     public static void removeZeroValues(Map<String, Integer> map) {
         Objects.requireNonNull(map);
 
+        // map.entrySet().removeIf(entry -> entry.getValue() == 0);
         for (var it = map.entrySet().iterator(); it.hasNext(); ) {
             var entry = it.next();
 
