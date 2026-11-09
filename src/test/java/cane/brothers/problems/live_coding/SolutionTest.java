@@ -2,6 +2,7 @@ package cane.brothers.problems.live_coding;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,6 +10,7 @@ import java.util.Map;
 import static cane.brothers.problems.live_coding.Solution.*;
 import static cane.brothers.problems.search_duplicates.Solution.containsDuplicate;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class SolutionTest {
 
@@ -88,5 +90,14 @@ class SolutionTest {
 //   0=["", ""],
 //   1=["a"]
 // }
+    }
+
+    @Test
+    void test_sortByLength() {
+        List<String> words = new ArrayList<>(List.of("dog", "a", "cat", "bb", "apple", "ant"));
+
+        sortByLength(words);
+
+        assertEquals(List.of("a", "bb", "ant", "cat", "dog", "apple"), words); // [a, bb, ant, cat, dog, apple]
     }
 }

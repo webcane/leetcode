@@ -102,5 +102,13 @@ public class Solution {
         return counts;
     }
 
+    public static void sortByLength(List<String> words) {
+        Objects.requireNonNull(words);
+
+        words.sort(Comparator.comparingInt(String::length)
+                .thenComparing(Comparator.naturalOrder())
+        );
+    }
+
 
 }
