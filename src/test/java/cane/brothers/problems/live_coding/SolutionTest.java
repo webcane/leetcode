@@ -129,4 +129,13 @@ class SolutionTest {
 //filter(List.of(), x -> true);
 //// []
     }
+
+    @Test
+    void test_map() {
+//        map(List.of(1, 2, 3), n -> n * 2); // [2, 4, 6]
+
+//        map(List.of("cat", "dog"), String::length); // [3, 3]
+
+//        map(List.of(), Object::toString); // []
+    }
 }

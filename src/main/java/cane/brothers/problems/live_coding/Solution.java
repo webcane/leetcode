@@ -1,6 +1,7 @@
 package cane.brothers.problems.live_coding;
 
 import java.util.*;
+import java.util.function.Function;
 import java.util.function.Predicate;
 
 public class Solution {
@@ -136,6 +137,17 @@ public class Solution {
             if (predicate.test(element)) {
                 result.add(element);
             }
+        }
+        return result;
+    }
+
+    public static <T, R> List<R> map(List<T> input, Function<T, R> mapper) {
+        Objects.requireNonNull(input);
+        Objects.requireNonNull(mapper);
+
+        List<R> result = new ArrayList<>();
+        for (T element : input) {
+            result.add(mapper.apply(element));
         }
         return result;
     }
