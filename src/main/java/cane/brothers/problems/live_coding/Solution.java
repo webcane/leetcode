@@ -1,6 +1,7 @@
 package cane.brothers.problems.live_coding;
 
 import java.util.*;
+import java.util.function.Predicate;
 
 public class Solution {
 
@@ -125,5 +126,19 @@ public class Solution {
                 .thenComparingInt(Employee::age)
                 .thenComparing(Employee::name));
     }
+
+    public static <T> List<T> filter(List<T> input, Predicate<T> predicate) {
+        Objects.requireNonNull(input);
+        Objects.requireNonNull(predicate);
+
+        List<T> result = new ArrayList<>();
+        for (T element : input) {
+            if (predicate.test(element)) {
+                result.add(element);
+            }
+        }
+        return result;
+    }
+
 
 }

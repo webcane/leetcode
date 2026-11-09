@@ -29,11 +29,7 @@ class SolutionTest {
 
     @Test
     void test_keyOfMaxValue() {
-        Map<String, Integer> map = Map.of(
-                "alice", -10,
-                "bob", -5,
-                "charlie", -20
-        );
+        Map<String, Integer> map = Map.of("alice", -10, "bob", -5, "charlie", -20);
 
         assertEquals("bob", keyOfMaxValue(map));
     }
@@ -120,5 +116,17 @@ class SolutionTest {
 //        ));
 //
 //        sortEmployees(employees);
+    }
+
+    @Test
+    void test_filter() {
+// filter(List.of(1, 2, 3, 4), n -> n % 2 == 0);
+//// [2, 4]
+//
+//filter(List.of("cat", "a", "dog"), s -> s.length() > 1);
+//// [cat, dog]
+//
+//filter(List.of(), x -> true);
+//// []
     }
 }
