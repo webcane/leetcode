@@ -106,9 +106,14 @@ public class Solution {
         Objects.requireNonNull(words);
 
         words.sort(Comparator.comparingInt(String::length)
-                .thenComparing(Comparator.naturalOrder())
-        );
+                .thenComparing(Comparator.naturalOrder()));
     }
 
+
+    public static void sortByLengthDescending(List<String> words) {
+        Objects.requireNonNull(words);
+        words.sort(Comparator.comparingInt(String::length).reversed()
+                .thenComparing(Comparator.naturalOrder()));
+    }
 
 }

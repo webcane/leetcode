@@ -41,7 +41,7 @@ class SolutionTest {
 
     @Test
     void test_findMin() {
-        assertEquals(1,findMin(List.of(5, 2, 8, 1)));   // 1
+        assertEquals(1, findMin(List.of(5, 2, 8, 1)));   // 1
         assertEquals(-20, findMin(List.of(-10, -3, -20))); // -20
         assertEquals(7, findMin(List.of(7)));            // 7
         assertEquals(null, findMin(List.of()));             // null
@@ -96,8 +96,17 @@ class SolutionTest {
     void test_sortByLength() {
         List<String> words = new ArrayList<>(List.of("dog", "a", "cat", "bb", "apple", "ant"));
 
-        sortByLength(words);
+        sortByLength(words);  // [a, bb, ant, cat, dog, apple]
 
-        assertEquals(List.of("a", "bb", "ant", "cat", "dog", "apple"), words); // [a, bb, ant, cat, dog, apple]
+        assertEquals(List.of("a", "bb", "ant", "cat", "dog", "apple"), words);
+    }
+
+    @Test
+    void test_sortByLengthDescending() {
+        List<String> words = new ArrayList<>(List.of("cat", "apple", "dog", "banana", "ant", "bee"));
+
+        sortByLengthDescending(words); // [banana, apple, ant, bee, cat, dog]
+
+        assertEquals(List.of("banana", "apple", "ant", "bee", "cat", "dog"), words);
     }
 }
