@@ -3,10 +3,10 @@ package cane.brothers.problems.live_coding;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-import static cane.brothers.problems.live_coding.Solution.keyOfMaxValue;
-import static cane.brothers.problems.live_coding.Solution.removeZeroValues;
+import static cane.brothers.problems.live_coding.Solution.*;
 import static cane.brothers.problems.search_duplicates.Solution.containsDuplicate;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -37,4 +37,36 @@ class SolutionTest {
     }
 
 
+    @Test
+    void test_findMin() {
+        assertEquals(1,findMin(List.of(5, 2, 8, 1)));   // 1
+        assertEquals(-20, findMin(List.of(-10, -3, -20))); // -20
+        assertEquals(7, findMin(List.of(7)));            // 7
+        assertEquals(null, findMin(List.of()));             // null
+    }
+
+    @Test
+    void test_findMax() {
+        assertEquals(7, findMax(new int[]{3, 7, 2}));       // 7
+        assertEquals(-2, findMax(new int[]{-5, -2, -10}));   // -2
+        assertEquals(Integer.MIN_VALUE, findMax(new int[]{Integer.MIN_VALUE})); // Integer.MIN_VALUE
+        assertEquals(null, findMax(new int[]{}));              // null
+    }
+
+    @Test
+    void test_longestWord() {
+        assertEquals("", longestWord(List.of(""))); // Ожидается ""
+        assertEquals("elephant", longestWord(List.of("cat", "elephant", "dog"))); // "elephant"
+        assertEquals("java", longestWord(List.of("java", "code", "test"))); // "java" — первое из слов максимальной длины
+        assertEquals("a", longestWord(List.of("a"))); // "a"
+        assertEquals(null, longestWord(List.of())); // null
+    }
+
+    @Test
+    void test_mostFrequent() {
+        assertEquals("a", mostFrequent(new String[]{"a", "b", "a", "c", "a", "b"})); // "a"
+        assertEquals("x", mostFrequent(new String[]{"x", "y", "x", "y"})); // "x" или "y"
+        assertEquals("hello", mostFrequent(new String[]{"hello"})); // "hello"
+        assertEquals(null, mostFrequent(new String[]{})); // null
+    }
 }

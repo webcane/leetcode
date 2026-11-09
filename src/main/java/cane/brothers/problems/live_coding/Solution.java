@@ -1,5 +1,7 @@
 package cane.brothers.problems.live_coding;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -25,7 +27,7 @@ public class Solution {
         String maxKey = null;
         int maxValue = Integer.MIN_VALUE;
 
-        for (Map.Entry<String, Integer> entry : map.entrySet()) {
+        for (var entry : map.entrySet()) {
             if (maxKey == null || entry.getValue() > maxValue) {
                 maxValue = entry.getValue();
                 maxKey = entry.getKey();
@@ -33,4 +35,62 @@ public class Solution {
         }
         return maxKey;
     }
+
+
+    public static Integer findMin(List<Integer> numbers) {
+        Objects.requireNonNull(numbers);
+
+        Integer minValue = null;
+        for (var number : numbers) {
+            if (minValue == null || minValue > number) {
+                minValue = number;
+            }
+        }
+        return minValue;
+    }
+
+    public static Integer findMax(int[] arr) {
+        Objects.requireNonNull(arr);
+
+        Integer maxValue = null;
+
+        for (int number : arr) {
+            if (maxValue == null || maxValue < number) {
+                maxValue = number;
+            }
+        }
+        return maxValue;
+    }
+
+    public static String longestWord(List<String> words) {
+        Objects.requireNonNull(words);
+
+        String longest = null;
+
+        for (String word : words) {
+            if (longest == null || word.length() > longest.length()) {
+                longest = word;
+            }
+        }
+        return longest;
+    }
+
+    public static String mostFrequent(String[] words) {
+        Objects.requireNonNull(words);
+
+        String freq = null;
+        int maxFreq = 0;
+
+        var counts = new HashMap<String, Integer>();
+        for (String w : words) {
+            int cur = counts.getOrDefault(w, 0) + 1;
+            counts.put(w, cur);
+            if (cur > maxFreq) {
+                maxFreq = cur;
+                freq = w;
+            }
+        }
+        return freq;
+    }
+
 }
