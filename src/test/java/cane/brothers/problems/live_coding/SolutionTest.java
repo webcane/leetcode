@@ -120,22 +120,23 @@ class SolutionTest {
 
     @Test
     void test_filter() {
-// filter(List.of(1, 2, 3, 4), n -> n % 2 == 0);
-//// [2, 4]
-//
-//filter(List.of("cat", "a", "dog"), s -> s.length() > 1);
-//// [cat, dog]
-//
-//filter(List.of(), x -> true);
-//// []
+// filter(List.of(1, 2, 3, 4), n -> n % 2 == 0); // [2, 4]
+//filter(List.of("cat", "a", "dog"), s -> s.length() > 1); // [cat, dog]
+//filter(List.of(), x -> true); // []
     }
 
     @Test
     void test_map() {
 //        map(List.of(1, 2, 3), n -> n * 2); // [2, 4, 6]
-
 //        map(List.of("cat", "dog"), String::length); // [3, 3]
-
 //        map(List.of(), Object::toString); // []
+    }
+
+    @Test
+    void test_fold() {
+//        fold(List.of(1, 2, 3), 0, Integer::sum); // 6
+//        fold(List.of("a", "b", "c"), "", (acc, s) -> acc + s); // "abc"
+//        fold(List.of(1, 2, 3), 1, (acc, n) -> acc * n); // 6
+//        fold(List.<Integer>of(), 100, Integer::sum); // 100
     }
 }

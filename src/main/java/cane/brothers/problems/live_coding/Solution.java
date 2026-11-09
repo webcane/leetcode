@@ -1,6 +1,7 @@
 package cane.brothers.problems.live_coding;
 
 import java.util.*;
+import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
@@ -148,6 +149,17 @@ public class Solution {
         List<R> result = new ArrayList<>();
         for (T element : input) {
             result.add(mapper.apply(element));
+        }
+        return result;
+    }
+
+    public static <T, R> R fold(List<T> input, R initial, BiFunction<R, T, R> accumulator) {
+        Objects.requireNonNull(input);
+        Objects.requireNonNull(accumulator);
+
+        R result = initial;
+        for (T element : input) {
+            result = accumulator.apply(result, element);
         }
         return result;
     }
